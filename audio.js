@@ -31,6 +31,9 @@ function initAudio(delayTime) {
 
 function triggerKick(context) {
 
+  // kick drum technique from 
+  // http://stackoverflow.com/questions/31773754/how-to-make-oscillator-based-kick-drum-sound-exactly-the-same-every-time/
+
   var oscillator = context.createOscillator();
   var gain = context.createGain();
   oscillator.connect(gain);
