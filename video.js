@@ -11,14 +11,14 @@ function getVineVideoUrls(channelUrls, options, callback) {
 
   // when all calls return, pluck out N video URLs from each source
   $.when.apply($, channelRequests).done(function () {
-  	var videoUrls = $.map(arguments, function (obj) { 
-  		var videos = obj[0]["data"]["records"];
-  		return $.map(
-  			videos.slice(0, options.numPerChannel), 
-  			function (v) { return v["videoUrl"]; }
-  		);
-  	});
- 	  callback(videoUrls);
+    var videoUrls = $.map(arguments, function (obj) { 
+    var videos = obj[0]["data"]["records"];
+      return $.map(
+        videos.slice(0, options.numPerChannel), 
+        function (v) { return v["videoUrl"]; }
+      );
+    });
+    callback(videoUrls);
   });
 
 }
@@ -34,8 +34,8 @@ function randomPlayVideos(videoUrls, options) {
   // Create a player for each URL and connect to audio chain
   $.each(videoUrls, function (index, url) {
     var player = $('<video />', {
-	    src: url,
-	    loop: true,
+      src: url,
+      loop: true,
       crossorigin: "anonymous"
     });
 
@@ -51,10 +51,10 @@ function randomPlayVideos(videoUrls, options) {
 
   // Unpause and show a randomly selected video every <interval> milliseconds
   window.setInterval(function() {
-	  $('video').hide().each(function() { $(this).get(0).pause(); });
+    $('video').hide().each(function() { $(this).get(0).pause(); });
     if (options.audio && options.processAudio) {
       triggerKick(audioInfo.context);
-  	}
+    }
     var player = $('video').random().show().get(0);
     if (options.resetToStartChance > Math.random()) {
       player.currentTime = 0;
