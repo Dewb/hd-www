@@ -1,3 +1,6 @@
+// hd-www 
+// utils.js
+// mpd 2016/06/20
 
 // Extension method to return a different random element each call
 jQuery.fn.random = function() {

@@ -1,3 +1,6 @@
+// hd-www 
+// audio.js
+// mpd 2016/06/20
 
 function initAudio(delayTime) {
 
@@ -35,7 +38,6 @@ function triggerKick(context) {
 
   var t = context.currentTime;
 
-  //oscillator.frequency.value = 5000; // for obvious glitch
   oscillator.frequency.value = 110;
   oscillator.frequency.setValueAtTime(110, t);
   oscillator.frequency.exponentialRampToValueAtTime(10, t + 0.2);
