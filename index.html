@@ -17,8 +17,8 @@
 
   window.addEventListener('load', function(e) {
     getVineVideoUrls(
-    	[
-    	  "https://api.vineapp.com/timelines/channels/vanity/weird",
+      [
+        "https://api.vineapp.com/timelines/channels/vanity/weird",
         "https://api.vineapp.com/timelines/channels/vanity/dance",
         
         // these don't appear to work with a defined crossorigin 
@@ -27,19 +27,19 @@
         //"https://api.vineapp.com/timelines/users/1071465578646110208", // POLITICO
         //"https://api.vineapp.com/timelines/users/1182450900061589504", // C-SPAN
         //"https://api.vineapp.com/timelines/users/1038266807917965312", // CNN Politics
-    	], 
-    	{
-    	  numPerChannel: 2,
-    	},
-    	function (urls) {
-    		randomPlayVideos(urls, { 
+      ], 
+      {
+        numPerChannel: 2,
+      },
+      function (urls) {
+        randomPlayVideos(urls, { 
           interval: 610, 
           audio: true, 
           processAudio: true, 
           resetToStartChance: 0.78,
           delayTime: 300
         });
-    	}
+      }
     );
   });
 
