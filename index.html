@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>H_YBR__I_D___D_E_CL___I_N_ER__S</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<script
+  src="https://code.jquery.com/jquery-3.0.0.min.js"   
+  integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="
+  crossorigin="anonymous"></script>
+
+<script src="utils.js"></script>
+<script src="audio.js"></script>
+<script src="video.js"></script>
+
+<script>
+
+  window.addEventListener('load', function(e) {
+    getVineVideoUrls(
+    	[
+    	  "https://api.vineapp.com/timelines/channels/vanity/weird",
+        "https://api.vineapp.com/timelines/channels/vanity/dance",
+        
+        // these don't appear to work with a defined crossorigin 
+        //"https://vine.co/api/posts/search/politics",
+        //"https://api.vineapp.com/timelines/users/907021576984211456", // Dewb
+        //"https://api.vineapp.com/timelines/users/1071465578646110208", // POLITICO
+        //"https://api.vineapp.com/timelines/users/1182450900061589504", // C-SPAN
+        //"https://api.vineapp.com/timelines/users/1038266807917965312", // CNN Politics
+    	], 
+    	{
+    	  numPerChannel: 2,
+    	},
+    	function (urls) {
+    		randomPlayVideos(urls, { 
+          interval: 610, 
+          audio: true, 
+          processAudio: true, 
+          resetToStartChance: 0.78,
+          delayTime: 300
+        });
+    	}
+    );
+  });
+
+</script>
+
+</head>
+<body>
+
+
+</body>
+</html>
