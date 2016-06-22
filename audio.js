@@ -4,6 +4,7 @@
 
 function initAudio(delayTime) {
 
+  var AudioContext = window.AudioContext || window.webkitAudioContext;
   var context = new AudioContext();
   
   var filter = context.createBiquadFilter();

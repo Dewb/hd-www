@@ -67,7 +67,10 @@ function randomPlayVideos(videoUrls, options) {
     if (options.resetToStartChance > Math.random()) {
       player.currentTime = 0;
     }
-    player.play().catch(function() {});
+    var promise = player.play();
+    if (promise) { 
+      promise.catch(function() {}); 
+    }
   }, options.interval);
 
 }
