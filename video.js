@@ -7,7 +7,12 @@ function getVineVideoUrls(channelUrls, options, callback) {
   options = options || { numPerChannel: 3 };
 
   // get the video stream from each channel
-  var channelRequests = $.map(channelUrls, function (source) { return $.ajax(source); })
+  var channelRequests = $.map(channelUrls, function (source) { 
+    return $.ajax({
+      url: source,
+      crossDomain: true,
+    }); 
+  });
 
   // when all calls return, pluck out N video URLs from each source
   $.when.apply($, channelRequests).done(function () {
@@ -15,7 +20,10 @@ function getVineVideoUrls(channelUrls, options, callback) {
     var videos = obj[0]["data"]["records"];
       return $.map(
         videos.slice(0, options.numPerChannel), 
-        function (v) { return v["videoUrl"]; }
+        function (v) { 
+          var url = v["videoLowURL"];
+          return url;
+        }
       );
     });
     callback(videoUrls);

@@ -22,15 +22,13 @@
   window.addEventListener('load', function(e) {
     getVineVideoUrls(
       [
-        "https://api.vineapp.com/timelines/channels/vanity/weird",
-        "https://api.vineapp.com/timelines/channels/vanity/dance",
-        
-        // these don't appear to work with a defined crossorigin 
-        //"https://vine.co/api/posts/search/politics",
-        //"https://api.vineapp.com/timelines/users/907021576984211456", // Dewb
-        //"https://api.vineapp.com/timelines/users/1071465578646110208", // POLITICO
-        //"https://api.vineapp.com/timelines/users/1182450900061589504", // C-SPAN
-        //"https://api.vineapp.com/timelines/users/1038266807917965312", // CNN Politics
+        "https://crossorigin.me/https://api.vineapp.com/timelines/channels/vanity/weird",
+        "https://crossorigin.me/https://api.vineapp.com/timelines/channels/vanity/dance",        
+        //"https://crossorigin.me/https://vine.co/api/posts/search/politics",
+        //"https://crossorigin.me/https://api.vineapp.com/timelines/users/907021576984211456", // Dewb
+        //"https://crossorigin.me/https://api.vineapp.com/timelines/users/1071465578646110208", // POLITICO
+        //"https://crossorigin.me/https://api.vineapp.com/timelines/users/1182450900061589504", // C-SPAN
+        //"https://crossorigin.me/https://api.vineapp.com/timelines/users/1038266807917965312", // CNN Politics
       ], 
       {
         numPerChannel: 2,
@@ -40,7 +38,7 @@
           interval: 610, 
           audio: true, 
           processAudio: true, 
-          resetToStartChance: 0.78,
+          resetToStartChance: 0.7,
           delayTime: 300
         });
       }
