@@ -8,10 +8,35 @@
   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="
   crossorigin="anonymous"></script>
 
+<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat' type='text/css'>
 <link rel="stylesheet" type="text/css" href="res/style.css">
 
 </head>
 <body>
+
+<div id="container">
+  <svg id="title" class="ui reposition-bottom">
+    <defs>
+      <mask id="mask" x="0" y="0" width="600" height="120">
+        <rect x="0" y="0" width="600" height="80" fill="#fff"></rect>
+        <text text-anchor="left" x="26" y="80" dy="1">HYbRID DEc LllNERs</text>
+        <text text-anchor="left" x="26" y="80" dy="1">HYBRID DECLINERS</text>
+      </mask>
+    </defs>
+    <rect x="0" y="0" width="600" height="120" mask="url(#mask)" fill-opacity="0.72" fill="#444"></rect>    
+  </svg>
+  <div class="ui toolbar reposition-bottom reposition-right">
+    <div class="toolbar-row">
+      <button id="slow">65bpm</button>
+      <button id="fast">104bpm</button>
+      <button id="show-about">about</reload>
+      <button id="reload">reload</reload>
+    </div>
+  </div>
+  <div id="about" class="ui">
+    Forage cardigan chartreuse kickstarter, authentic readymade sartorial chambray farm-to-table humblebrag ennui seitan cold-pressed. Swag art party direct trade irony green juice, butcher everyday carry synth tumblr migas 90's authentic. YOLO tacos master cleanse, PBR hashtag tilde fingerstache you probably haven't heard of them. Literally distillery typewriter godard banh mi 90's. Bicycle rights marfa occupy, franzen plaid wolf direct trade cold-pressed butcher.
+  </div>
+</div>
 
 <script src="js/utils.js"></script>
 <script src="js/audio.js"></script>
@@ -20,6 +45,9 @@
 <script>
 
   window.addEventListener('load', function(e) {
+
+    reposition();
+
     getVineVideoUrls(
       [
         "https://crossorigin.me/https://api.vineapp.com/timelines/channels/vanity/weird",
@@ -34,16 +62,61 @@
         numPerChannel: 2,
       },
       function (urls) {
-        randomPlayVideos(urls, { 
+         var beatFn = setupRandomPlayVideos(urls, { 
           interval: 610, 
           audio: true, 
           processAudio: true, 
           resetToStartChance: 0.7,
           delayTime: 300
         });
+
+        window.beatInterval = 580;
+        window.lastBeat = 0;
+
+        var frameFn = function(time) {
+          if (time - window.lastBeat > window.beatInterval) {
+            beatFn();
+            window.lastBeat = time;
+          }
+          window.requestAnimationFrame(frameFn);
+        }
+
+        window.requestAnimationFrame(frameFn);
       }
     );
   });
+
+  window.addEventListener('resize', function(e) {
+    reposition();
+  });
+
+  function reposition() {
+    var h = $(window).height(), w = $(window).width();
+    $('.reposition-bottom').css({'top' : (h - 180) + 'px'});
+    $('.reposition-right').css({'left' : (w - 160) + 'px'});
+  }
+
+  $("#show-about").click(function() {
+    if ($('#about').css('display') == 'none') {
+      $('#about').fadeIn();
+      $("#show-about").text("hide");
+    } else {
+      $(".ui").fadeOut();
+    }
+  });
+
+  $("#reload").click(function() {
+    window.location.reload();
+  });
+
+  $("#fast").click(function() {
+    window.beatInterval = 580;
+  });
+
+  $("#slow").click(function() {
+    window.beatInterval = 920;
+  });
+
 
 </script>
 

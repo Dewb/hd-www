@@ -5,16 +5,81 @@
 */
 
 body {
-	background-color: black;
+  background-color: black;
+  margin: 0;
+  padding: 0;
 }
 
 video {
   position: fixed;
   top: 50%; left: 50%;
-  z-index: 1;
+  z-index: 2;
   min-width: 100%;
   min-height: 100%;
   width: auto;
   height: auto;
   transform: translate(-50%, -50%);
+}
+
+.ui {
+  z-index: 9999;
+  font-family: Montserrat, Helvetica;
+}
+
+.toolbar {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 160px;
+  height: 80px;
+  margin-top: 40px;
+}
+
+.toolbar button {
+  float: right;
+  color: #666;
+  border: 0;
+  margin-left: 3px;
+  margin-bottom: 3px;
+  padding: 0;
+  background-color: rgba(64, 64, 64, 0.72);
+  height: 37px;
+  width: 77px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+button:focus { outline: none; }
+button:hover { background-color: rgba(80, 80, 80, 0.9); }
+button:active { background-color: rgba(110, 110, 110, 0.9); }
+
+#about {
+  background-color: rgba(64, 64, 64, 0.72);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 555px;
+  margin-top: 40px;
+  padding: 15px;
+  padding-left: 30px;
+  font-size: 16px;
+  display: none;
+  color: #666;
+}
+
+#title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0;
+  margin-left: 0;
+  margin-top: 40px;
+  font-size: 48px;
+  letter-spacing: -4px;
+  width: 700px;
+}
+
+#container {
+  position: relative;
+  display: inline-block;
 }

@@ -31,9 +31,9 @@ function getVineVideoUrls(channelUrls, options, callback) {
 
 }
 
-function randomPlayVideos(videoUrls, options) {
+function setupRandomPlayVideos(videoUrls, options) {
 
-  var options = options || { interval: 200 };
+  var options = options || { audio: false, processAudio: false };
   var audioIndo = undefined;
   if (options.audio && options.processAudio) {
     audioInfo = initAudio(options.delayTime);
@@ -54,11 +54,11 @@ function randomPlayVideos(videoUrls, options) {
       source.connect(audioInfo.input);
     }
 
-    player.appendTo('body');
+    $('#container').append(player);
   });
 
-  // Unpause and show a randomly selected video every <interval> milliseconds
-  window.setInterval(function() {
+  // Return a function to play a randomly selected video, let the caller handle timing
+  return function() {
     $('video').hide().each(function() { $(this).get(0).pause(); });
     if (options.audio && options.processAudio) {
       triggerKick(audioInfo.context);
@@ -71,6 +71,6 @@ function randomPlayVideos(videoUrls, options) {
     if (promise) { 
       promise.catch(function() {}); 
     }
-  }, options.interval);
+  }
 
 }
