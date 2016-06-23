@@ -19,11 +19,12 @@
     <defs>
       <mask id="mask" x="0" y="0" width="600" height="120">
         <rect x="0" y="0" width="600" height="80" fill="#fff"></rect>
+        <path d="M 600 0 L 622 80 H 600 Z" fill="#fff" stroke="#fff"></path>
         <text text-anchor="left" x="26" y="80" dy="1">HYbRID DEc LllNERs</text>
         <text text-anchor="left" x="26" y="80" dy="1">HYBRID DECLINERS</text>
       </mask>
     </defs>
-    <rect x="0" y="0" width="600" height="120" mask="url(#mask)" fill-opacity="0.72" fill="#444"></rect>    
+    <rect x="0" y="0" width="630" height="120" mask="url(#mask)" fill-opacity="1.0" fill="#444"></rect>    
   </svg>
   <div class="ui toolbar reposition-bottom reposition-right">
     <div class="toolbar-row">
@@ -34,7 +35,11 @@
     </div>
   </div>
   <div id="about" class="ui">
-    Forage cardigan chartreuse kickstarter, authentic readymade sartorial chambray farm-to-table humblebrag ennui seitan cold-pressed. Swag art party direct trade irony green juice, butcher everyday carry synth tumblr migas 90's authentic. YOLO tacos master cleanse, PBR hashtag tilde fingerstache you probably haven't heard of them. Literally distillery typewriter godard banh mi 90's. Bicycle rights marfa occupy, franzen plaid wolf direct trade cold-pressed butcher.
+    <p>HYBRID DECLINERS performs live, improvised, retro-futuristic modular techno. A project by musician/producer <a href="https://twitter.com/infrasonick">Nick Donaldson</a> (<a href="https://soundcloud.com/kip-schwinger">Kip Schwinger</a>) and sound designer/visual artist <a href="http://dewb.org">Michael Dewberry</a> (<a href="http://videobleep.tv/">Video Bleep</a>, <a href="http://pmrp.org/">Post-Meridian Radio Players</a>).</p>
+
+    <p><a href="https://soundcloud.com/hybrid-decliners">soundcloud.com/hybrid-decliners</a></p>
+
+    <p>background videos sourced and mixed live in your browser from <a href="http://vine.co">Vine</a> channels <a href="https://vine.co/channels/weird">"Weird"</a> and <a href="https://vine.co/channels/dance">"Dance"</a>
   </div>
 </div>
 
@@ -47,6 +52,9 @@
   window.addEventListener('load', function(e) {
 
     reposition();
+
+    $("#title").fadeIn(600);
+    $(".toolbar").fadeIn(1100);
 
     getVineVideoUrls(
       [

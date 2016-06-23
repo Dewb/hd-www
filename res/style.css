@@ -26,6 +26,21 @@ video {
   font-family: Montserrat, Helvetica;
 }
 
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #888;
+}
+
+a:active {
+  text-decoration: none;
+  color: #555;
+}
+
 .toolbar {
   position: absolute;
   padding: 0;
@@ -33,6 +48,7 @@ video {
   width: 160px;
   height: 80px;
   margin-top: 40px;
+  display: none;
 }
 
 .toolbar button {
@@ -42,7 +58,7 @@ video {
   margin-left: 3px;
   margin-bottom: 3px;
   padding: 0;
-  background-color: rgba(64, 64, 64, 0.72);
+  background-color: rgba(64, 64, 64, 1.0);
   height: 37px;
   width: 77px;
   font-size: 12px;
@@ -50,21 +66,25 @@ video {
 }
 
 button:focus { outline: none; }
-button:hover { background-color: rgba(80, 80, 80, 0.9); }
-button:active { background-color: rgba(110, 110, 110, 0.9); }
+button:hover { background-color: rgba(80, 80, 80, 1.0); }
+button:active { background-color: rgba(110, 110, 110, 1.0); }
 
 #about {
-  background-color: rgba(64, 64, 64, 0.72);
+  background-color: rgba(64, 64, 64, 1.0);
   position: absolute;
   left: 0;
   top: 0;
-  width: 555px;
+  width: 455px;
   margin-top: 40px;
-  padding: 15px;
-  padding-left: 30px;
+  padding-top: 15px;
+  padding-left: 40px;
+  padding-right: 30px;
+  padding-bottom: 40px;
   font-size: 16px;
   display: none;
   color: #666;
+  -webkit-clip-path: polygon(0 3%, 100% 0%, 98% 84%, 0 100%);
+  clip-path: polygon(0 3%, 100% 0%, 98% 84%, 0 100%);
 }
 
 #title {
@@ -77,6 +97,7 @@ button:active { background-color: rgba(110, 110, 110, 0.9); }
   font-size: 48px;
   letter-spacing: -4px;
   width: 700px;
+  display: none;
 }
 
 #container {
