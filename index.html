@@ -28,8 +28,9 @@
   </svg>
   <div class="ui toolbar reposition-bottom reposition-right">
     <div class="toolbar-row">
-      <button id="slow">65bpm</button>
-      <button id="fast">104bpm</button>
+      <button class="speed" id="slow">65bpm</button>
+      <button class="speed" id="fast" style="display:none">104bpm</button>
+      <button class="speed" id="faster">146bpm</button>
       <button id="show-about">about</reload>
       <button id="reload">reload</reload>
     </div>
@@ -118,11 +119,21 @@
   });
 
   $("#fast").click(function() {
+    $(".speed").show();
+    $("#fast").hide();
     window.beatInterval = 580;
   });
 
   $("#slow").click(function() {
+    $(".speed").show();
+    $("#slow").hide();
     window.beatInterval = 920;
+  });
+
+  $("#faster").click(function() {
+    $(".speed").show();
+    $("#faster").hide();
+    window.beatInterval = 410;
   });
 
 
