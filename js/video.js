@@ -4,6 +4,11 @@
 
 function getVineVideoUrls(channelUrls, options, callback) {
 
+  if (options.useLocal) {
+    callback(["res/fallback1.mp4", "res/fallback2.mp4"]);
+    return;
+  }
+
   options = options || { numPerChannel: 3 };
 
   // get the video stream from each channel
@@ -33,7 +38,7 @@ function getVineVideoUrls(channelUrls, options, callback) {
 
 function setupRandomPlayVideos(videoUrls, options) {
 
-  var options = options || { audio: false, processAudio: false };
+  var options = options || { audio: false, processAudio: false, useShader: true };
   var audioIndo = undefined;
   if (options.audio && options.processAudio) {
     audioInfo = initAudio(options.delayTime);
@@ -63,13 +68,19 @@ function setupRandomPlayVideos(videoUrls, options) {
     if (options.audio && options.processAudio) {
       triggerKick(audioInfo.context);
     }
-    var player = $('video').random().show().get(0);
+    var player = $('video').random();
     if (options.resetToStartChance > Math.random()) {
-      player.currentTime = 0;
+      player.get(0).currentTime = 0;
     }
-    var promise = player.play();
-    if (promise) { 
-      promise.catch(function() {}); 
+    if (options.useShader) {
+      updateVideoTexture(player.get(0));
+      player.get(0).play();
+    } else {
+      player.show();
+      var promise = player.get(0).play();
+      if (promise) { 
+        promise.catch(function() {}); 
+      }
     }
   }
 
