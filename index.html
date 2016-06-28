@@ -44,9 +44,19 @@
   </div>
 </div>
 
+<script src="lib/three.js/three.min.js"></script>
+<script src="lib/three.js/examples/js/shaders/ConvolutionShader.js"></script>
+<script src="lib/three.js/examples/js/shaders/CopyShader.js"></script>
+<script src="lib/three.js/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="lib/three.js/examples/js/postprocessing/RenderPass.js"></script>
+<script src="lib/three.js/examples/js/postprocessing/MaskPass.js"></script>
+<script src="lib/three.js/examples/js/postprocessing/BloomPass.js"></script>
+<script src="lib/three.js/examples/js/postprocessing/ShaderPass.js"></script>
+
 <script src="js/utils.js"></script>
 <script src="js/audio.js"></script>
 <script src="js/video.js"></script>
+<script src="js/shader.js"></script>
 
 <script>
 
@@ -91,6 +101,8 @@
         }
 
         window.requestAnimationFrame(frameFn);
+
+        init3d();
       }
     );
   });
