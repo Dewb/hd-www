@@ -49,7 +49,13 @@ function setupRandomPlayVideos(videoUrls, options) {
     var player = $('<video />', {
       src: url,
       loop: true,
-      crossorigin: "anonymous"
+      crossorigin: "anonymous",
+      "webkit-playsinline": "",
+    });
+
+    makeVideoPlayableInline(player.get(0));
+    player.on('touchstart', function () {
+      $.each($('video'), function (i, obj) { obj.play() });
     });
 
     if (!options.audio) {

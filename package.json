@@ -1,0 +1,23 @@
+{
+  "name": "hd-www",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "iphone-inline-video": "^1.9.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dewb/hd-www.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Dewb/hd-www/issues"
+  },
+  "homepage": "https://github.com/Dewb/hd-www#readme"
+}
