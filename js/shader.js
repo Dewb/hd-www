@@ -15,7 +15,7 @@ function init3d() {
 	THREE.TanlineShader = {
 		uniforms: {
 			"tDiffuse": { value: null },
-			"opacity":  { value: 0.35 },
+			"opacity":  { value: 0.4 },
 			"time": { value: 0.0 },
 		},
 		vertexShader: $('#vertex_shader').text(),
@@ -65,16 +65,21 @@ function init3d() {
 	renderer.autoClear = false;
 
 	var renderModel = new THREE.RenderPass(scene, camera);
-	var effectBloom = new THREE.BloomPass(1.5);
+	var effectBloom = new THREE.BloomPass(1.45);
 	effectTanline = new THREE.ShaderPass(THREE.TanlineShader);
+	var effectBright = new THREE.ShaderPass(THREE.BrightnessContrastShader);
 	var effectCopy = new THREE.ShaderPass(THREE.CopyShader);
 
 	effectCopy.renderToScreen = true;
+
+	effectBright.material.uniforms.brightness.value = -0.06;
+	effectBright.material.uniforms.contrast.value = 0.15;
 
 	composer = new THREE.EffectComposer(renderer);
 
 	composer.addPass(renderModel);
 	composer.addPass(effectTanline);
+	composer.addPass(effectBright);
 	composer.addPass(effectBloom);
 	composer.addPass(effectCopy);
 
