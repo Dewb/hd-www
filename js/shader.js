@@ -7,7 +7,20 @@ var camera, scene, renderer;
 var video, texture, material, mesh;
 var composer;
 
+var effectTanline;
+
+
 function init3d() {
+
+	THREE.TanlineShader = {
+		uniforms: {
+			"tDiffuse": { value: null },
+			"opacity":  { value: 0.35 },
+			"time": { value: 0.0 },
+		},
+		vertexShader: $('#vertex_shader').text(),
+		fragmentShader: $('#tanline_fragment_shader').text()
+	};
 
 	container = $('<div>', { id: "renderCanvas" } );
 	$("body").append(container);
@@ -53,6 +66,7 @@ function init3d() {
 
 	var renderModel = new THREE.RenderPass(scene, camera);
 	var effectBloom = new THREE.BloomPass(1.7);
+	effectTanline = new THREE.ShaderPass(THREE.TanlineShader);
 	var effectCopy = new THREE.ShaderPass(THREE.CopyShader);
 
 	effectCopy.renderToScreen = true;
@@ -60,6 +74,7 @@ function init3d() {
 	composer = new THREE.EffectComposer(renderer);
 
 	composer.addPass(renderModel);
+	composer.addPass(effectTanline);
 	composer.addPass(effectBloom);
 	composer.addPass(effectCopy);
 
@@ -86,6 +101,7 @@ function onWindowResize() {
 
 function render3d() {
 
+    effectTanline.material.uniforms.time.value += 0.001;
 	renderer.clear();
 	composer.render();
 

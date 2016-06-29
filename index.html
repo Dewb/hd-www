@@ -48,6 +48,7 @@
 </div>
 
 <script src="lib/three.js/three.min.js"></script>
+<script src="lib/three.js/examples/js/Detector.js"></script>
 <script src="lib/three.js/examples/js/shaders/ConvolutionShader.js"></script>
 <script src="lib/three.js/examples/js/shaders/CopyShader.js"></script>
 <script src="lib/three.js/examples/js/postprocessing/EffectComposer.js"></script>
@@ -61,9 +62,82 @@
 <script src="js/shader.js"></script>
 <script src="js/video.js"></script>
 
+<script id="tanline_fragment_shader" type="x-shader/x-fragment">
+uniform float opacity;
+varying vec2 vUv;
+uniform sampler2D tDiffuse;
+uniform float time;
+
+void main(void)
+{
+  float StripeHeight = 0.18;
+  float NotchHeight = 0.25;
+  float Advance = time * 0.1;
+  float SlideStripes = 1.0;
+  float RepeatY = mod(time * 4.0, 0.25);
+  float RepeatX = mod(time * 0.25, 0.6);
+  float StretchX = 0.0;
+  float OffsetY = mod(time * 0.1, 1.0);
+  float OffsetX = 0.0;
+  float Mix = 0.7;
+
+  float y = mod(vUv.t + OffsetY, 1.0);
+  float x = mod(vUv.s + OffsetX, 1.0);
+  
+  float band = floor((1.0 - y) / StripeHeight);
+  float m = mod((1.0 - y), StripeHeight);
+  if (m / StripeHeight < NotchHeight && x < mod(Advance * band, 1.0)) {
+    band -= 1.0;
+  }
+  
+  vec2 nudge = vec2(0.0, 0.0);
+  if (RepeatY > 0.0) {
+    nudge -= mod(y, RepeatY * 0.05);
+  }
+  if (RepeatX > 0.0) {
+    nudge += mod(x, RepeatX * 0.1);
+  }
+
+  float xprime = 0.5 + (1.0 - StretchX) * (x - 0.5);
+  float yprime = 1.0 - band * StripeHeight;
+
+  if (SlideStripes > 0.0) {
+    xprime += band * Advance;
+  }
+
+  vec2 fxCoord = vec2(xprime, yprime) + nudge;
+  vec4 fxColor = texture2D(tDiffuse, fxCoord);
+
+  vec2 origCoord = vec2(xprime, y);
+  vec4 origColor = texture2D(tDiffuse, origCoord);
+
+  gl_FragColor = mix(fxColor, origColor, Mix);
+  gl_FragColor = mix(texture2D(tDiffuse, vUv), gl_FragColor, opacity);
+}
+
+</script>
+
+<script id="vertex_shader" type="x-shader/x-vertex">
+  varying vec2 vUv;
+  void main()
+  {
+    vUv = uv;
+    vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+    gl_Position = projectionMatrix * mvPosition;
+  }
+</script>
+
 <script>
 
   window.addEventListener('load', function(e) {
+
+    var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+    var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
+    var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+    var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+    var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
+    if ((is_chrome)&&(is_safari)) {is_safari=false;}
+    if ((is_chrome)&&(is_opera)) {is_chrome=false;}
 
     reposition();
 
@@ -91,7 +165,8 @@
           processAudio: true, 
           resetToStartChance: 0.7,
           delayTime: 300,
-          useShader: true,
+          // Use WebGL shader effects only if WebGL is supported and we're not Safari
+          useShader: Detector.webgl && !is_safari,
         });
 
         window.beatInterval = 580;
@@ -157,6 +232,8 @@
 
 
 </script>
+
+
 
 </body>
 </html>
