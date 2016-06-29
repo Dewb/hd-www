@@ -65,7 +65,7 @@ function init3d() {
 	renderer.autoClear = false;
 
 	var renderModel = new THREE.RenderPass(scene, camera);
-	var effectBloom = new THREE.BloomPass(1.7);
+	var effectBloom = new THREE.BloomPass(1.5);
 	effectTanline = new THREE.ShaderPass(THREE.TanlineShader);
 	var effectCopy = new THREE.ShaderPass(THREE.CopyShader);
 
