@@ -2,31 +2,30 @@
 // video.js
 // mpd 2016/06/20
 
-function getVineVideoUrls(channelUrls, options, callback) {
+function getVideoUrls(channelUrls, options, callback) {
 
   if (options.useLocal) {
     callback(["res/fallback1.mp4", "res/fallback2.mp4"]);
     return;
   }
 
-  options = options || { numPerChannel: 3 };
+  options = options || { numPerChannel: 3, crossDomain: true };
 
   // get the video stream from each channel
   var channelRequests = $.map(channelUrls, function (source) { 
     return $.ajax({
       url: source,
-      crossDomain: true,
+      crossDomain: options.crossDomain,
     }); 
   });
 
   // when all calls return, pluck out N video URLs from each source
   $.when.apply($, channelRequests).done(function () {
     var videoUrls = $.map(arguments, function (obj) { 
-    var videos = obj[0]["data"]["records"];
+    var videos = obj[0];
       return $.map(
         videos.slice(0, options.numPerChannel), 
-        function (v) { 
-          var url = v["videoLowURL"];
+        function (url) { 
           return url;
         }
       );

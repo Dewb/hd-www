@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "iphone-inline-video": "^1.9.3"
+    "cors": "^2.8.1",
+    "express": "^4.15.2",
+    "iphone-inline-video": "^1.9.3",
+    "twitter": "^1.7.0",
+    "yargs": "^7.0.2"
   },
   "devDependencies": {},
   "scripts": {
