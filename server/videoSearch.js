@@ -19,7 +19,9 @@ function getTweets(searchTerms, callback) {
 
 	console.log("Requesting video tweets for " + searchTerms);
 
-	client.get('search/tweets', { q: 'filter:native_video ' + searchTerms }, function(error, tweets, response) {
+	var optionString = "filter:safe";
+
+	client.get('search/tweets', { q: 'filter:native_video ' + searchTerms + ' ' + optionString }, function(error, tweets, response) {
 
 	  if (error) {
 

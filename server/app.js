@@ -1,14 +1,17 @@
 var express = require('express');
-var app = express();
-
+var path = require('path');
 var argv = require('yargs').argv;
+
+var videoSearch = require('./videoSearch.js');
+
+var app = express();
 
 if (argv.cors) {
 	var cors = require('cors');
 	app.use(cors());
 }
 
-var videoSearch = require('./videoSearch.js');
+app.use('/', express.static(path.join(__dirname, '../client')));
 
 app.get('/video_search/:terms', function (req, res) {
   var searchTerms = req.params.terms;
