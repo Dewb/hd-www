@@ -32,17 +32,17 @@ video .background {
 
 a {
   text-decoration: none;
-  color: #888;
+  color: #885;
 }
 
 a:hover {
   text-decoration: none;
-  color: #999;
+  color: #996;
 }
 
 a:active {
   text-decoration: none;
-  color: #555;
+  color: #552;
 }
 
 .toolbar {
