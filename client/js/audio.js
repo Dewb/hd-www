@@ -2,7 +2,7 @@
 // audio.js
 // mpd 2016/06/20
 
-function initAudio(delayTime) {
+export function initAudio(delayTime) {
 
   var AudioContext = window.AudioContext || window.webkitAudioContext;
   var context = new AudioContext();
@@ -10,7 +10,7 @@ function initAudio(delayTime) {
   var filter = context.createBiquadFilter();
   filter.type = "highpass";
   filter.frequency.value = 3400;
-  filter.Q = 1.6;
+  filter.Q.value = 1.6;
 
   var delay = context.createDelay(0.5);
   delay.delayTime.value = delayTime/1000;
@@ -30,7 +30,7 @@ function initAudio(delayTime) {
   };
 }
 
-function triggerKick(context) {
+export function triggerKick(context) {
 
   // kick drum technique from 
   // http://stackoverflow.com/questions/31773754/how-to-make-oscillator-based-kick-drum-sound-exactly-the-same-every-time/

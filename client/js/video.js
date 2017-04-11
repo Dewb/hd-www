@@ -2,7 +2,14 @@
 // video.js
 // mpd 2016/06/20
 
-function getVideoUrls(channelUrls, options, callback) {
+import * as audioEngine from './audio'
+import * as shader from './shader'
+
+import * as enableIphoneInlineVideo from 'iphone-inline-video'
+
+var useShader = true;
+
+export function getVideoUrls(channelUrls, options, callback) {
 
   if (options.useLocal) {
     callback(["res/fallback1.mp4", "res/fallback2.mp4"]);
@@ -35,13 +42,15 @@ function getVideoUrls(channelUrls, options, callback) {
 
 }
 
-function setupRandomPlayVideos(videoUrls, options) {
+export function setupRandomPlayVideos(videoUrls, options) {
 
   var options = options || { audio: false, processAudio: false, useShader: true };
-  var audioIndo = undefined;
+  var audioInfo = undefined;
   if (options.audio && options.processAudio) {
-    audioInfo = initAudio(options.delayTime);
+    audioInfo = audioEngine.initAudio(options.delayTime);
   }
+
+  useShader = options.useShader;
  
   // Create a player for each URL and connect to audio chain
   $.each(videoUrls, function (index, url) {
@@ -52,7 +61,8 @@ function setupRandomPlayVideos(videoUrls, options) {
       "webkit-playsinline": "",
     });
 
-    makeVideoPlayableInline(player.get(0));
+    enableIphoneInlineVideo(player.get(0), true, false);
+
     player.on('touchstart', function () {
       $.each($('video'), function (i, obj) { obj.play() });
     });
@@ -67,18 +77,22 @@ function setupRandomPlayVideos(videoUrls, options) {
     $('#container').append(player);
   });
 
+  if (useShader) {
+    shader.init3d();
+  }
+
   // Return a function to play a randomly selected video, let the caller handle timing
   return function() {
     $('video').hide().each(function() { $(this).get(0).pause(); });
     if (options.audio && options.processAudio) {
-      triggerKick(audioInfo.context);
+      audioEngine.triggerKick(audioInfo.context);
     }
     var player = $('video').random();
     if (options.resetToStartChance > Math.random()) {
       player.get(0).currentTime = 0;
     }
     if (options.useShader) {
-      updateVideoTexture(player.get(0));
+      shader.updateVideoTexture(player.get(0));
       player.get(0).play();
     } else {
       player.show();
@@ -89,4 +103,10 @@ function setupRandomPlayVideos(videoUrls, options) {
     }
   }
 
+}
+
+export function render() {
+  if (useShader) {
+    shader.render3d();
+  }
 }

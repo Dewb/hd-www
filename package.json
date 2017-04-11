@@ -2,25 +2,26 @@
   "name": "hd-www",
   "version": "1.0.0",
   "description": "Hybrid Decliners website",
-  "homepage": "hybriddecliners.com",
+  "homepage": "http://hybriddecliners.com",
   "main": "index.js",
   "dependencies": {
     "cors": "^2.8.1",
     "express": "^4.15.2",
+    "imports-loader": "^0.7.1",
     "iphone-inline-video": "^1.9.3",
+    "jquery": "^3.0.0",
+    "three": "^0.78.0",
     "twitter": "^1.7.0",
     "yargs": "^7.0.2"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 6.0.0"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-contrib-qunit": "~0.5.2",
-    "grunt-contrib-concat": "~0.4.0",
-    "grunt-contrib-uglify": "~0.5.0"
+    "grunt-webpack": "^2.0.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
   },
   "scripts": {
     "start": "node server/app.js",
@@ -34,6 +35,5 @@
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/Dewb/hd-www/issues"
-  },
-  "homepage": "https://github.com/Dewb/hd-www#readme"
+  }
 }

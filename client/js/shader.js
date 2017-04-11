@@ -2,6 +2,15 @@
 // shader.js
 // mpd 2016/06/27
 
+import ConvolutionShader from 'three/examples/js/shaders/ConvolutionShader'
+import BrightnessContrastShader from 'three/examples/js/shaders/BrightnessContrastShader'
+import CopyShader from 'three/examples/js/shaders/CopyShader'
+import EffectComposer from 'three/examples/js/postprocessing/EffectComposer'
+import RenderPass from 'three/examples/js/postprocessing/RenderPass'
+import MaskPass from 'three/examples/js/postprocessing/MaskPass'
+import BloomPass from 'three/examples/js/postprocessing/BloomPass'
+import ShaderPass from 'three/examples/js/postprocessing/ShaderPass'
+
 var container;
 var camera, scene, renderer;
 var video, texture, material, mesh;
@@ -10,7 +19,7 @@ var composer;
 var effectTanline;
 
 
-function init3d() {
+export function init3d() {
 
 	THREE.TanlineShader = {
 		uniforms: {
@@ -87,7 +96,7 @@ function init3d() {
 
 }
 
-function onWindowResize() {
+export function onWindowResize() {
 
 	var w = window.innerWidth;
 	var h = window.innerHeight;
@@ -103,8 +112,7 @@ function onWindowResize() {
 
 }
 
-
-function render3d() {
+export function render3d() {
 
     effectTanline.material.uniforms.time.value += 0.001;
 	renderer.clear();
@@ -112,7 +120,7 @@ function render3d() {
 
 }
 
-function updateVideoTexture(video) {
+export function updateVideoTexture(video) {
 
 	texture.image = video;
 
