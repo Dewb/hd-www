@@ -2,14 +2,7 @@
 // video.js
 // mpd 2016/06/20
 
-import * as audioEngine from './audio'
-import * as shader from './shader'
-
-import * as enableIphoneInlineVideo from 'iphone-inline-video'
-
-var useShader = true;
-
-export function getVideoUrls(channelUrls, options, callback) {
+function getVideoUrls(channelUrls, options, callback) {
 
   if (options.useLocal) {
     callback(["res/fallback1.mp4", "res/fallback2.mp4"]);
@@ -42,15 +35,13 @@ export function getVideoUrls(channelUrls, options, callback) {
 
 }
 
-export function setupRandomPlayVideos(videoUrls, options) {
+function setupRandomPlayVideos(videoUrls, options) {
 
   var options = options || { audio: false, processAudio: false, useShader: true };
-  var audioInfo = undefined;
+  var audioIndo = undefined;
   if (options.audio && options.processAudio) {
-    audioInfo = audioEngine.initAudio(options.delayTime);
+    audioInfo = initAudio(options.delayTime);
   }
-
-  useShader = options.useShader;
  
   // Create a player for each URL and connect to audio chain
   $.each(videoUrls, function (index, url) {
@@ -61,8 +52,7 @@ export function setupRandomPlayVideos(videoUrls, options) {
       "webkit-playsinline": "",
     });
 
-    enableIphoneInlineVideo(player.get(0), true, false);
-
+    makeVideoPlayableInline(player.get(0));
     player.on('touchstart', function () {
       $.each($('video'), function (i, obj) { obj.play() });
     });
@@ -77,22 +67,18 @@ export function setupRandomPlayVideos(videoUrls, options) {
     $('#container').append(player);
   });
 
-  if (useShader) {
-    shader.init3d();
-  }
-
   // Return a function to play a randomly selected video, let the caller handle timing
   return function() {
     $('video').hide().each(function() { $(this).get(0).pause(); });
     if (options.audio && options.processAudio) {
-      audioEngine.triggerKick(audioInfo.context);
+      triggerKick(audioInfo.context);
     }
     var player = $('video').random();
     if (options.resetToStartChance > Math.random()) {
       player.get(0).currentTime = 0;
     }
     if (options.useShader) {
-      shader.updateVideoTexture(player.get(0));
+      updateVideoTexture(player.get(0));
       player.get(0).play();
     } else {
       player.show();
@@ -103,10 +89,4 @@ export function setupRandomPlayVideos(videoUrls, options) {
     }
   }
 
-}
-
-export function render() {
-  if (useShader) {
-    shader.render3d();
-  }
 }
