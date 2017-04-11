@@ -1,4 +1,5 @@
 var Twitter = require('twitter');
+var cache = require('memory-cache');
 
 var client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -6,14 +7,19 @@ var client = new Twitter({
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
-	
-var data = {};
- 
+
+// Minimum cache time to stay under Twitter rate limits:
+// 450 requests per 15 minute window = 2000ms between requests
+
+var twitterRateLimit = 2000;
+var cacheTime = twitterRateLimit * 2 * 3;
+
 function getTweets(searchTerms, callback) {
 
-	if (searchTerms in data) {
-  		console.log("Returning cached results for '" + searchTerms + "' (" + data[searchTerms].length + " urls)");
-		callback(data[searchTerms]);
+	var cacheData = cache.get(searchTerms);
+	if (cacheData) {
+  		console.log("Returning cached results for '" + searchTerms + "' (" + cacheData.length + " urls)");
+		callback(cacheData);
 		return;
 	}
 
@@ -31,9 +37,6 @@ function getTweets(searchTerms, callback) {
 	  } else {
 
 	  	var urls = [];
-
-	  	//console.log(tweets);
-	  	//console.log("\n---\n");
 
 	  	console.log("Search returned " + tweets['statuses'].length + " tweets");
 
@@ -60,9 +63,7 @@ function getTweets(searchTerms, callback) {
 	    });
 
 	    console.log("Tweets contained " + urls.length + " video urls");
-	    if (urls.length > 0) {
-	    	data[searchTerms] = urls;
-	    }
+	    cache.put(searchTerms, urls, cacheTime);
 
 	    callback(urls);
 	  }

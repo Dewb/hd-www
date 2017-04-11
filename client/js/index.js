@@ -22,7 +22,7 @@ window.addEventListener('load', function(e) {
     [
       "http://localhost:3000/video_search/dance",
       "http://localhost:3000/video_search/weird",
-      "http://localhost:3000/video_search/c-span",
+      //"http://localhost:3000/video_search/c-span",
     ], 
     {
       numPerChannel: 2,
