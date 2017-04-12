@@ -28,33 +28,58 @@
     <img src="res/static.jpg">
 </video>
 
+<svg id="title" viewBox="80 170 430 150">
+  <defs>
+    <filter id="shadow" x="0" y="0" width="150%" height="150%">
+      <feOffset in="SourceGraphic" dx="3" dy="3" />
+      <feGaussianBlur stdDeviation="1"/>
+      <feColorMatrix 
+      type="matrix"
+      values="-1 0 0 0 0
+              0 -1 0 0 0
+              0 0 -1 0 0
+              0 0 0 1 0" />
+      <feMerge> 
+        <feMergeNode/> 
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+      <feGaussianBlur stdDeviation="1"/>
+      <feDisplacementMap
+      scale="1" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <path
+     id="hd"
+     style="fill:#ffffdd;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     filter="url(#shadow)"
+     d="m 476.75419,260.12946 3.66211,0 0,7.32422 -7.32422,0 0,-3.66211 -3.66211,0 0,-3.66211 -14.64844,0 0,3.66211 -3.66211,0 0,7.32422 3.66211,0 0,3.66211 18.31055,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,14.64843 -3.66211,0 0,3.66211 -3.66211,0 0,3.66211 -21.97266,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-7.32422 7.32422,0 0,3.66211 3.66211,0 0,3.66211 14.64844,0 0,-3.66211 3.66211,0 0,-7.32422 -3.66211,0 0,-3.6621 -18.31055,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-14.64844 3.66211,0 0,-3.66211 3.66211,0 0,-3.66211 21.97266,0 0,3.66211 3.66211,0 0,3.66211 z m -69.58008,0 0,14.64844 18.31055,0 0,-3.66211 3.66211,0 0,-7.32422 -3.66211,0 0,-3.66211 -18.31055,0 z m 3.66211,21.97266 -3.66211,0 0,21.97265 -7.32422,0 0,-51.26953 29.29688,0 0,3.66211 3.66211,0 0,3.66211 3.6621,0 0,14.64844 -3.6621,0 0,3.66211 -3.66211,0 0,3.66211 -7.32422,0 0,3.6621 3.66211,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,3.66211 3.6621,0 0,7.32422 -7.32421,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.6621 z m -18.31055,-29.29688 0,7.32422 -29.29687,0 0,14.64844 21.97265,0 0,7.32422 -21.97265,0 0,14.64843 29.29687,0 0,7.32422 -36.62109,0 0,-51.26953 36.62109,0 z m -73.24219,21.97266 0,29.29687 -7.32421,0 0,-51.26953 7.32421,0 0,10.98633 3.66211,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,-29.29688 7.32422,0 0,51.26953 -7.32422,0 0,-10.98633 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.6621 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 z m -43.94531,29.29687 0,-7.32422 7.32422,0 0,-36.62109 -7.32422,0 0,-7.32422 21.97266,0 0,7.32422 -7.32422,0 0,36.62109 7.32422,0 0,7.32422 -21.97266,0 z m -51.26953,0 0,-51.26953 7.32422,0 0,43.94531 29.29687,0 0,7.32422 -36.62109,0 z m -32.95898,-7.32422 14.64843,0 0,-3.66211 3.66211,0 0,-3.66211 7.32422,0 0,7.32422 -3.66211,0 0,3.66211 -3.66211,0 0,3.66211 -21.97265,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-36.62109 3.66211,0 0,-3.66211 3.66211,0 0,-3.66211 21.97265,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,7.32422 -7.32422,0 0,-3.66211 -3.66211,0 0,-3.66211 -14.64843,0 0,3.66211 -3.66211,0 0,29.29687 3.66211,0 0,3.66211 z m -18.31055,-43.94531 0,7.32422 -29.29688,0 0,14.64844 21.97266,0 0,7.32422 -21.97266,0 0,14.64843 29.29688,0 0,7.32422 -36.62109,0 0,-51.26953 36.62109,0 z m -73.242193,7.32422 0,36.62109 18.310553,0 0,-3.66211 3.66211,0 0,-29.29687 -3.66211,0 0,-3.66211 -18.310553,0 z m -7.324216,43.94531 0,-51.26953 29.296879,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,36.62109 -3.66211,0 0,3.66211 -3.66211,0 0,3.66211 -29.296879,0 z m 227.050779,-115.19531 0,36.62109 18.31055,0 0,-3.66211 3.66211,0 0,-29.29687 -3.66211,0 0,-3.66211 -18.31055,0 z m -7.32421,43.94531 0,-51.26953 29.29687,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,36.62109 -3.66211,0 0,3.66211 -3.66211,0 0,3.66211 -29.29687,0 z m -36.6211,0 0,-7.32422 7.32422,0 0,-36.62109 -7.32422,0 0,-7.32422 21.97266,0 0,7.32422 -7.32422,0 0,36.62109 7.32422,0 0,7.32422 -21.97266,0 z m -43.94531,-43.94531 0,14.64844 18.31055,0 0,-3.66211 3.66211,0 0,-7.32422 -3.66211,0 0,-3.66211 -18.31055,0 z m 3.66211,21.97266 -3.66211,0 0,21.97265 -7.32422,0 0,-51.26953 29.29688,0 0,3.66211 3.66211,0 0,3.66211 3.6621,0 0,14.64844 -3.6621,0 0,3.66211 -3.66211,0 0,3.66211 -7.32422,0 0,3.6621 3.66211,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,3.66211 3.6621,0 0,7.32422 -7.32421,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.66211 -3.66211,0 0,-3.6621 z m -47.60742,-7.32422 18.31054,0 0,-3.66211 3.66211,0 0,-7.32422 -3.66211,0 0,-3.66211 -18.31054,0 0,14.64844 z m -7.32422,29.29687 0,-51.26953 29.29687,0 0,3.66211 3.66211,0 0,3.66211 3.66211,0 0,14.64844 -3.66211,0 0,7.32422 3.66211,0 0,14.64843 -3.66211,0 0,3.66211 -3.66211,0 0,3.66211 -29.29687,0 z m 7.32422,-7.32422 18.31054,0 0,-3.66211 3.66211,0 0,-7.32422 -3.66211,0 0,-3.6621 -18.31054,0 0,14.64843 z m -29.29688,7.32422 -7.32422,0 0,-18.31055 -3.66211,0 0,-3.6621 -3.66211,0 0,-3.66211 -3.6621,0 0,-3.66211 -3.66211,0 0,-21.97266 7.32421,0 0,18.31055 3.66211,0 0,3.66211 3.66211,0 0,3.66211 7.32422,0 0,-3.66211 3.66211,0 0,-3.66211 3.66211,0 0,-18.31055 7.32422,0 0,21.97266 -3.66211,0 0,3.66211 -3.66211,0 0,3.66211 -3.66211,0 0,3.6621 -3.66211,0 0,18.31055 z m -58.593753,-21.97265 0,21.97265 -7.324216,0 0,-51.26953 7.324216,0 0,21.97266 21.972663,0 0,-21.97266 7.32422,0 0,51.26953 -7.32422,0 0,-21.97265 -21.972663,0 z"/>
+</svg>
+
+<svg id="bpm" viewBox="0 0 310 70">
+  <path
+     id="bpm-path"
+     style="fill:#ffffdd;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     filter="url(#shadow)"
+     d="m 306.631,33.065305 0,7.3242 -29.29688,0 0,-7.3242 29.29688,0 z m -47.60744,-21.9726 7.32422,0 0,14.6484 -3.66211,0 0,3.6621 -3.66211,0 0,3.6621 -3.66211,0 0,3.6621 -3.66212,0 0,3.6621 -3.66211,0 0,3.6622 -3.66211,0 0,3.6621 -3.66211,0 0,3.6621 -3.66211,0 0,10.9863 -7.32422,0 0,-14.6484 3.66211,0 0,-3.6621 3.66211,0 0,-3.6622 3.66211,0 0,-3.6621 3.66211,0 0,-3.6621 3.66211,0 0,-3.6621 3.66211,0 0,-3.6621 3.66212,0 0,-3.6621 3.66211,0 0,-10.9863 z m -58.59378,21.9726 0,-14.6484 7.32422,0 0,14.6484 14.64845,0 0,7.3242 -14.64845,0 0,14.6485 -7.32422,0 0,-14.6485 -14.64845,0 0,-7.3242 14.64845,0 z m -95.21488,29.2969 -7.324226,0 0,-51.2695 7.324226,0 0,7.3242 3.66211,0 0,3.6621 3.66211,0 0,3.6621 7.32421,0 0,-3.6621 3.66211,0 0,-3.6621 3.66212,0 0,-7.3242 7.32422,0 0,51.2695 -7.32422,0 0,-32.959 -3.66212,0 0,3.6621 -3.66211,0 0,7.3242 -7.32421,0 0,-7.3242 -3.66211,0 0,-3.6621 -3.66211,0 0,32.959 z m -43.945346,-43.9453 0,14.6484 18.310559,0 0,-3.6621 3.662112,0 0,-7.3242 -3.662112,0 0,-3.6621 -18.310559,0 z m 0,21.9726 0,21.9727 -7.324213,0 0,-51.2695 29.296884,0 0,3.6621 3.662111,0 0,3.6621 3.662112,0 0,14.6484 -3.662112,0 0,3.6621 -3.662111,0 0,3.6621 -21.972671,0 z m -43.945331,-7.3242 18.310559,0 0,-3.6621 3.662112,0 0,-7.3242 -3.662112,0 0,-3.6621 -18.310559,0 0,14.6484 z M 10,62.362205 l 0,-51.2695 29.296894,0 0,3.6621 3.662112,0 0,3.6621 3.662111,0 0,14.6484 -3.662111,0 0,7.3242 3.662111,0 0,14.6485 -3.662111,0 0,3.6621 -3.662112,0 0,3.6621 -29.296894,0 z m 7.324223,-7.3242 18.310559,0 0,-3.6621 3.662112,0 0,-7.3242 -3.662112,0 0,-3.6622 -18.310559,0 0,14.6485 z"/>
+</svg>
+
+<svg id="info" viewBox="0 0 310 70">
+  <path
+     id="info-path"
+     style="fill:#ffffdd;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     filter="url(#shadow)"
+     d="m 160.14649,18.416905 -14.64844,0 0,3.6621 -3.66211,0 0,29.2969 3.66211,0 0,3.6621 14.64844,0 0,-3.6621 3.66211,0 0,-29.2969 -3.66211,0 0,-3.6621 z m -18.31055,-3.66211 0,-3.66211 21.97266,0 0,3.66211 3.6621,0 0,3.66211 3.66211,0 0,36.6211 -3.66211,0 0,3.6621 -3.6621,0 0,3.6621 -21.97266,0 0,-3.6621 -3.66211,0 0,-3.6621 -3.66211,0 0,-36.6211 3.66211,0 0,-3.66211 3.66211,0 z m -14.64844,-3.66211 0,7.32422 -29.296871,0 0,14.6484 21.972651,0 0,7.3242 -21.972651,0 0,21.9727 -7.32422,0 0,-51.26952 36.621091,0 z m -73.24219,21.97262 0,29.2969 -7.32421,0 0,-51.26952 7.32421,0 0,10.98632 3.66211,0 0,3.6621 3.66211,0 0,3.6621 3.66211,0 0,3.6621 3.66211,0 0,3.6621 3.66211,0 0,3.6621 3.66211,0 0,-29.29682 7.32422,0 0,51.26952 -7.32422,0 0,-10.9863 -3.66211,0 0,-3.6621 -3.66211,0 0,-3.6621 -3.66211,0 0,-3.6622 -3.66211,0 0,-3.6621 -3.66211,0 0,-3.6621 -3.66211,0 z M 10,62.362205 l 0,-7.3242 7.32422,0 0,-36.6211 -7.32422,0 0,-7.32422 21.97266,0 0,7.32422 -7.32422,0 0,36.6211 7.32422,0 0,7.3242 -21.97266,0 z" />
+</svg>
+
 <div id="container">
-  <svg id="title" class="ui reposition-bottom">
-    <defs>
-      <mask id="mask" x="0" y="0" width="600" height="120">
-        <rect x="0" y="0" width="600" height="80" fill="#fff"></rect>
-        <path d="M 600 0 L 622 80 H 600 Z" fill="#fff" stroke="#fff"></path>
-        <text text-anchor="left" x="26" y="80" dy="1">HYbRID DEc LllNERs</text>
-        <text text-anchor="left" x="26" y="80" dy="1">HYBRID DECLINERS</text>
-      </mask>
-    </defs>
-    <rect x="0" y="0" width="630" height="120" mask="url(#mask)" fill-opacity="1.0" fill="#444"></rect>    
-  </svg>
-  <div class="ui toolbar reposition-bottom reposition-right">
-    <div class="toolbar-row">
-      <button class="speed" id="slow">65bpm</button>
-      <button class="speed" id="fast" style="display:none">104bpm</button>
-      <button class="speed" id="faster">146bpm</button>
-      <button id="show-about">about</reload>
-      <button id="reload">reload</reload>
-    </div>
-  </div>
   <div id="about" class="ui">
     <p>HYBRID DECLINERS performs live, improvised, retro-futuristic modular techno. A project by musician/producer <a href="https://twitter.com/infrasonick">Nick Donaldson</a> (<a href="https://soundcloud.com/kip-schwinger">Kip Schwinger</a>) and sound designer/visual artist <a href="http://dewb.org">Michael Dewberry</a> (<a href="http://videobleep.tv/">Video Bleep</a>, <a href="http://pmrp.org/">Post-Meridian Radio Players</a>).</p>
 
     <p><a href="https://soundcloud.com/hybrid-decliners">soundcloud.com/hybrid-decliners</a></p>
 
-    <p>background videos sourced and mixed live in your browser from the latest <a href="http://twitter.com">Twitter</a> search results for <a href="https://twitter.com/search?q=weird">"weird"</a> and <a href="https://twitter.com/search?q=dance">"dance"</a>
+    <p>background videos sourced and mixed live in your browser from the latest <a href="http://twitter.com">Twitter</a> search results for <a href="https://twitter.com/search?q=weird">"weird"</a> and <a href="https://twitter.com/search?q=dance">"dance"</a></p>
+
+    <p><br>[<span class="fakelink hideui">hide this</span>]</p>
   </div>
 </div>
 
@@ -151,113 +176,7 @@ void main(void)
   ga('send', 'pageview');
 </script>
 
-<script>
-
-  window.addEventListener('load', function(e) {
-
-    var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
-    var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
-    var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
-    var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-    var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
-    if ((is_chrome)&&(is_safari)) {is_safari=false;}
-    if ((is_chrome)&&(is_opera)) {is_chrome=false;}
-
-    reposition();
-
-    $("#title").fadeIn(600);
-    $(".toolbar").fadeIn(1100);
-
-    getVideoUrls(
-      [
-        "http://localhost:3000/video_search/dance",
-        "http://localhost:3000/video_search/weird",
-        //"http://localhost:3000/video_search/c-span",
-      ], 
-      {
-        numPerChannel: 2,
-        useLocal: false,
-        crossOrigin: false
-      },
-      function (urls) {
-         var beatFn = setupRandomPlayVideos(urls, { 
-          interval: 610, 
-          audio: true, 
-          processAudio: true, 
-          resetToStartChance: 0.7,
-          delayTime: 300,
-          // Use WebGL shader effects only if WebGL is supported and we're not Safari
-          useShader: Detector.webgl && !is_safari,
-        });
-
-        window.beatInterval = 580;
-        window.lastBeat = 0;
-
-        init3d();
-
-        var frameFn = function(time) {
-          if (time - window.lastBeat > window.beatInterval) {
-            beatFn();
-            window.lastBeat = time;
-          }
-          render3d();
-          window.requestAnimationFrame(frameFn);
-        }
-
-        if (localStorage["hideUI"]) {
-          $(".ui").hide();
-        }
-
-        window.requestAnimationFrame(frameFn);
-
-      }
-    );
-  });
-
-  window.addEventListener('resize', function(e) {
-    reposition();
-  });
-
-  function reposition() {
-    var h = $(window).height(), w = $(window).width();
-    $('.reposition-bottom').css({'top' : (h - 180) + 'px'});
-    $('.reposition-right').css({'left' : (w - 160) + 'px'});
-  }
-
-  $("#show-about").click(function() {
-    if ($('#about').css('display') == 'none') {
-      $('#about').fadeIn();
-      $("#show-about").text("hide");
-    } else {
-      $(".ui").fadeOut();
-    }
-  });
-
-  $("#reload").click(function() {
-    window.location.reload();
-  });
-
-  $("#fast").click(function() {
-    $(".speed").show();
-    $("#fast").hide();
-    window.beatInterval = 580;
-  });
-
-  $("#slow").click(function() {
-    $(".speed").show();
-    $("#slow").hide();
-    window.beatInterval = 920;
-  });
-
-  $("#faster").click(function() {
-    $(".speed").show();
-    $("#faster").hide();
-    window.beatInterval = 410;
-  });
-
-
-</script>
-
+<script src="js/index.js"></script>
 
 
 </body>

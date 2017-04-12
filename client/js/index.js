@@ -1,9 +1,4 @@
-import * as video from './video.js'
-import * as utils from './utils.js'
-
-import Detector from 'three/examples/js/Detector'
-
-window.addEventListener('load', function(e) {
+ window.addEventListener('load', function(e) {
 
   var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
   var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
@@ -16,9 +11,10 @@ window.addEventListener('load', function(e) {
   reposition();
 
   $("#title").fadeIn(600);
-  $(".toolbar").fadeIn(1100);
+  $("#info").delay(2000).fadeIn(800);
+  $("#bpm").delay(2000).fadeIn(800);
 
-  video.getVideoUrls(
+  getVideoUrls(
     [
       "http://localhost:3000/video_search/dance",
       "http://localhost:3000/video_search/weird",
@@ -30,7 +26,7 @@ window.addEventListener('load', function(e) {
       crossOrigin: false
     },
     function (urls) {
-       var beatFn = video.setupRandomPlayVideos(urls, { 
+       var beatFn = setupRandomPlayVideos(urls, { 
         interval: 610, 
         audio: true, 
         processAudio: true, 
@@ -43,12 +39,14 @@ window.addEventListener('load', function(e) {
       window.beatInterval = 580;
       window.lastBeat = 0;
 
+      init3d();
+
       var frameFn = function(time) {
         if (time - window.lastBeat > window.beatInterval) {
           beatFn();
           window.lastBeat = time;
         }
-        video.render();
+        render3d();
         window.requestAnimationFrame(frameFn);
       }
 
@@ -72,33 +70,22 @@ function reposition() {
   $('.reposition-right').css({'left' : (w - 160) + 'px'});
 }
 
-$("#show-about").click(function() {
+$("#info").click(function() {
   if ($('#about').css('display') == 'none') {
+    $("#info").hide();
     $('#about').fadeIn();
-    $("#show-about").text("hide");
-  } else {
-    $(".ui").fadeOut();
   }
 });
 
-$("#reload").click(function() {
-  window.location.reload();
+var speeds = [920, 410, 580];
+
+$("#bpm").click(function() {
+  window.beatInterval = speeds[0];
+  speeds.push(speeds.shift());
 });
 
-$("#fast").click(function() {
-  $(".speed").show();
-  $("#fast").hide();
-  window.beatInterval = 580;
+$(".hideui").click(function() {
+  $('#about').fadeOut();
+  $('#bpm').fadeOut();
 });
 
-$("#slow").click(function() {
-  $(".speed").show();
-  $("#slow").hide();
-  window.beatInterval = 920;
-});
-
-$("#faster").click(function() {
-  $(".speed").show();
-  $("#faster").hide();
-  window.beatInterval = 410;
-});

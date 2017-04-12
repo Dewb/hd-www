@@ -25,11 +25,6 @@ video .background {
   z-index: 1;
 }
 
-.ui {
-  z-index: 9999;
-  font-family: Montserrat, Helvetica;
-}
-
 a {
   text-decoration: none;
   color: #885;
@@ -41,6 +36,25 @@ a:hover {
 }
 
 a:active {
+  text-decoration: none;
+  color: #552;
+}
+
+.fakelink {
+  text-decoration: none;
+  color: #885;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+.fakelink:hover {
+  text-decoration: none;
+  color: #996;
+}
+
+.fakelink:active {
   text-decoration: none;
   color: #552;
 }
@@ -77,35 +91,50 @@ button:active { background-color: rgba(110, 110, 110, 1.0); }
   background-color: rgba(64, 64, 64, 1.0);
   position: absolute;
   left: 0;
-  top: 0;
-  width: 455px;
+  bottom: 4em;
+  width: 50%;
   margin-top: 40px;
-  padding-top: 15px;
+  padding-top: 25px;
   padding-left: 40px;
   padding-right: 30px;
   padding-bottom: 40px;
-  font-size: 16px;
+  font-size: 20px;
   display: none;
   color: #777;
-  -webkit-clip-path: polygon(0 3%, 100% 0%, 98% 84%, 0 100%);
-  clip-path: polygon(0 3%, 100% 0%, 98% 84%, 0 100%);
+  -webkit-clip-path: polygon(0 5%, 100% 0%, 98% 84%, 0 100%);
+  clip-path: polygon(0 5%, 100% 0%, 98% 84%, 0 100%);
+  z-index: 40000;
+  font-family: Montserrat, Helvetica;
 }
 
-#title {
+svg {
+  z-index: 30000;
   position: absolute;
+  margin: 2em;
+  display: none;
+}
+
+svg#title {
   left: 0;
   top: 0;
-  padding: 0;
-  margin-left: 0;
-  margin-top: 40px;
-  font-size: 48px;
-  letter-spacing: -4px;
-  width: 700px;
-  display: none;
+  width: 40%;
+}
+
+svg#bpm {
+  right: 0;
+  bottom: 0;
+  width: 20%;
+  cursor: pointer;
+}
+
+svg#info {
+  left: 0;
+  bottom: 0;
+  width: 20%;
+  cursor: pointer;
 }
 
 #container {
-  position: relative;
   display: inline-block;
 }
 
