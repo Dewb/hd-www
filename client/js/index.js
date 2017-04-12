@@ -16,9 +16,9 @@
 
   getVideoUrls(
     [
-      "http://localhost:3000/video_search/dance",
-      "http://localhost:3000/video_search/weird",
-      //"http://localhost:3000/video_search/c-span",
+      "video_search/dance",
+      "video_search/weird",
+      //video_search/c-span",
     ], 
     {
       numPerChannel: 2,
