@@ -2,17 +2,16 @@
   "name": "hd-www",
   "version": "1.0.0",
   "description": "Hybrid Decliners website",
-  "homepage": "hybriddecliners.com",
+  "homepage": "http://hybriddecliners.com",
   "main": "index.js",
   "dependencies": {
-    "cors": "^2.8.1",
     "express": "^4.15.2",
     "memory-cache": "^0.1.6",
-    "twitter": "^1.7.0",
-    "yargs": "^7.0.2"
+    "nconf": "^0.8.4",
+    "twitter": "^1.7.0"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.4.0"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -34,6 +33,5 @@
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/Dewb/hd-www/issues"
-  },
-  "homepage": "https://github.com/Dewb/hd-www#readme"
+  }
 }

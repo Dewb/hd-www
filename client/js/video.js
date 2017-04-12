@@ -73,18 +73,21 @@ function setupRandomPlayVideos(videoUrls, options) {
     if (options.audio && options.processAudio) {
       triggerKick(audioInfo.context);
     }
-    var player = $('video').random();
-    if (options.resetToStartChance > Math.random()) {
-      player.get(0).currentTime = 0;
-    }
-    if (options.useShader) {
-      updateVideoTexture(player.get(0));
-      player.get(0).play();
-    } else {
-      player.show();
-      var promise = player.get(0).play();
-      if (promise) { 
-        promise.catch(function() {}); 
+    var playerElem = $('video').random();
+    var player = playerElem.get(0);
+    if (player) {
+      if (options.resetToStartChance > Math.random()) {
+        player.currentTime = 0;
+      }
+      if (options.useShader) {
+        updateVideoTexture(player);
+        player.play();
+      } else {
+        player.show();
+        var promise = player.play();
+        if (promise) { 
+          promise.catch(function() {}); 
+        }
       }
     }
   }

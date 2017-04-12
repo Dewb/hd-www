@@ -1,11 +1,14 @@
 var Twitter = require('twitter');
 var cache = require('memory-cache');
+var nconf = require('nconf');
+
+nconf.file('secrets', __dirname +'/config/secrets.json');
 
 var client = new Twitter({
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+  consumer_key: nconf.get('twitter:consumer_key'),
+  consumer_secret: nconf.get('twitter:consumer_secret'),
+  access_token_key: nconf.get('twitter:access_token_key'),
+  access_token_secret: nconf.get('twitter:access_token_secret')
 });
 
 // Minimum cache time to stay under Twitter rate limits:
@@ -32,7 +35,7 @@ function getTweets(searchTerms, callback) {
 	  if (error) {
 
 	  	console.log(error);
-	  	callback(undefined, error);
+	  	callback([], error);
 
 	  } else {
 
