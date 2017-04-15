@@ -2,6 +2,15 @@
 // video.js
 // mpd 2016/06/20
 
+function randomSlice(array, count) {
+  var ret = [];
+  while (count-- > 0) {
+    var x = array.splice(Math.floor(Math.random() * array.length), 1);
+    ret.push(x[0]);
+  }
+  return ret;
+}
+
 function getVideoUrls(channelUrls, options, callback) {
 
   if (options.useLocal) {
@@ -22,9 +31,9 @@ function getVideoUrls(channelUrls, options, callback) {
   // when all calls return, pluck out N video URLs from each source
   $.when.apply($, channelRequests).done(function () {
     var videoUrls = $.map(arguments, function (obj) { 
-    var videos = obj[0];
+      var videos = obj[0];
       return $.map(
-        videos.slice(0, options.numPerChannel), 
+        randomSlice(videos, options.numPerChannel), 
         function (url) { 
           return url;
         }
@@ -83,7 +92,7 @@ function setupRandomPlayVideos(videoUrls, options) {
         updateVideoTexture(player);
         player.play();
       } else {
-        player.show();
+        playerElem.show();
         var promise = player.play();
         if (promise) { 
           promise.catch(function() {}); 
