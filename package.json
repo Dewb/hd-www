@@ -5,7 +5,7 @@
   "homepage": "http://hybriddecliners.com",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "memory-cache": "^0.1.6",
     "nconf": "^0.8.4",
     "twitter": "^1.7.1"
